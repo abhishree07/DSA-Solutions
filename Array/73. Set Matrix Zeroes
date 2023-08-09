@@ -1,0 +1,38 @@
+#Brute Force Approach
+#Space Complexity = O(m*n) & Time Complexity O(m*n(m+n))
+class Solution {
+    public void setZeroes(int[][] arr) {
+      int m=arr.length; 
+      int n=arr[0].length; 
+      
+      for(int i=0;i<m;i++){
+          for(int j=0;j<n;j++){
+              if(arr[i][j]==0){
+                  setRowZero(arr,m,n,i);
+                  setColumnZero(arr,m,n,j);
+              }
+          }
+      }
+        for(int i=0;i<m;i++){
+          for(int j=0;j<n;j++){
+              if(arr[i][j]==-111){
+                  arr[i][j]=0;
+              }
+          }
+      } 
+    }
+    public void setRowZero(int [][] arr,int m,int n,int row){
+        for(int j=0;j<n;j++){
+            if(arr[row][j]!=0)
+                arr[row][j]=-111;
+        }
+    }
+    public void setColumnZero(int [][] arr,int m,int n,int column){
+        for(int j=0;j<m;j++){
+            if(arr[j][column]!=0)
+                arr[j][column]=-111;
+        }
+    }
+}
+
+#Better Approach 
