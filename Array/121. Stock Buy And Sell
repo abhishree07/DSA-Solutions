@@ -1,0 +1,36 @@
+#Brute Force
+Time Complexity O(n*n) Space Complexity O(1) //TLE
+class Solution {
+    public int maxProfit(int[] arr) {
+       int n=arr.length; 
+       int maxPrice=0;
+
+       for(int i=0;i<n;i++){
+           for(int j=i+1;j<n;j++){
+              if(arr[j]>arr[i])
+              {
+                  maxPrice=Math.max(arr[j]-arr[i],maxPrice);
+              }
+           }
+       }
+       return maxPrice;
+    }
+}
+
+#Optimized Approach
+Time Complexity O(n) Space Complexity O(1)
+class Solution {
+    public int maxProfit(int[] arr) {
+       int n=arr.length; 
+       int maxPrice=0;
+       int minValue=Integer.MAX_VALUE;
+       for(int i=0;i<n;i++){
+           if(arr[i]<minValue){
+               minValue=arr[i];
+           }
+           maxPrice=Math.max(maxPrice,arr[i]-minValue);
+            
+       }
+       return maxPrice;
+    }
+}
