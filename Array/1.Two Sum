@@ -16,6 +16,22 @@ class Solution {
     }
 }
 #Better Approach (Hashing)
+Time Complexity=O(n) Space Complexity O(n)
+class Solution {
+    public int[] twoSum(int[] arr, int target) {
+        int n=arr.length;
+        HashMap<Integer,Integer> map=new HashMap<>();
 
-#Optimized Approach (Two Pointer)
-
+        int[] ans=new int[2];
+        for(int i=0;i<n;i++){
+           int numReq=target-arr[i];
+           if(map.containsKey(numReq)){
+           ans[0]=map.get(numReq);
+           ans[1]=i;
+           return ans;
+           }
+           map.put(arr[i],i);
+        }
+        return ans;
+    }
+}
