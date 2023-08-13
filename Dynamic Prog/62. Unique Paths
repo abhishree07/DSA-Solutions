@@ -1,0 +1,39 @@
+#Brute Force Approach
+#Throws TLE due to time and space complexity 
+Time complexity O(2^(m+n)) Space Complexity O(m+n)
+class Solution {
+    public int uniquePaths(int m, int n) {
+       return func(0,0,m,n);    
+    }
+
+    public int func(int i,int j,int m,int n){
+        
+        if(i==(m-1) && j==(n-1)){
+        return 1; 
+        }
+        if(i>=m || j>=n)
+        {
+            return 0;
+        }
+        int bottom=func(i+1,j,m,n);
+        int right=func(i,j+1,m,n);
+
+        return bottom+right;
+    }
+}
+#Optimized Approach
+#Time Complexity O(m*n) Space Complexity O(m*n)
+class Solution {
+    public int uniquePaths(int m, int n) {
+        int[][] arr=new int[m][n];
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+               if(i==0 || j==0)
+               arr[i][j]=1;
+               else
+               arr[i][j]=arr[i-1][j]+arr[i][j-1];
+            }
+        }
+        return arr[m-1][n-1];
+    }
+}
