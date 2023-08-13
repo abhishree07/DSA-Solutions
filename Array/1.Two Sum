@@ -1,0 +1,21 @@
+#Brute Force 
+Time Complexity=O(n*n) 
+class Solution {
+    public int[] twoSum(int[] arr, int target) {
+        int n=arr.length;
+        int[] ans=new int[2];
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i]+arr[j]==target){
+                ans[0]=i;
+                ans[1]=j;
+                }
+            }
+        }
+        return ans;
+    }
+}
+#Better Approach (Hashing)
+
+#Optimized Approach (Two Pointer)
+
