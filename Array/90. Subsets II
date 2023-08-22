@@ -1,0 +1,27 @@
+#  Print all the Unique Subsets
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        int n = nums.length;
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        generateUniqueSS(nums, n, result, new ArrayList<>(), 0);
+        return result;
+    }
+    
+    public void generateUniqueSS(int[] nums, int n, List<List<Integer>> result, List<Integer> res, int i){
+        if(i==n){
+            result.add(new ArrayList<>(res));
+            return;
+        }
+        if(i>0 && res.size()>0 && nums[i] == nums[i-1] && (res.get(res.size()-1) == nums[i])){
+            res.add(nums[i]);  
+            generateUniqueSS(nums, n, result, res, i+1);
+        }
+        else{
+            generateUniqueSS(nums, n, result, res, i+1);
+            res.add(nums[i]);
+            generateUniqueSS(nums, n, result, res, i+1);
+        }
+        res.remove(res.size()-1);
+    }
+}
