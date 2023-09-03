@@ -1,0 +1,66 @@
+#Brute force approach
+TC-O(n)
+public int singleNonDuplicate(int[] arr) {
+        int n=arr.length;
+        int ans=-1;
+        if(n==1)
+        return arr[0];
+        for(int i=0;i<n;i++){
+           if(i==0){
+               if(arr[i]!=arr[i+1])
+            {   ans=arr[i];
+               break;
+           }
+           }
+           else if(i==n-1){
+               if(arr[i]!=arr[i-1])
+            {   ans=arr[i];
+               break;
+           }
+           }
+        else{
+            if(arr[i-1]!=arr[i] && arr[i]!=arr[i+1]){
+                ans=arr[i];
+                break;
+            }
+        }
+
+       }
+       return ans;
+    }
+
+#Optimized approach (Binary search)
+TC=O(log n)
+class Solution {
+    public int singleNonDuplicate(int[] arr) {
+        int ans=-1;
+        int n=arr.length;
+        //handling corner cases to reduce search space
+        if(n==1)
+        return arr[0];
+        if(arr[0]!=arr[1])
+        return arr[0];
+        if(arr[n-2]!=arr[n-1])
+        return arr[n-1];
+        int low=1; int high=n-2;
+
+        while(low<=high){
+            int mid=(low+(high-low)/2);
+        //check if mid is the single element
+        if((arr[mid]!=arr[mid-1]) && (arr[mid]!=arr[mid+1]))
+        {
+            ans=arr[mid];
+            break;
+        }
+        //reducing search space
+        else if(((mid%2==0)&&(arr[mid]==arr[mid+1])) || ((mid%2!=0)&&(arr[mid]==arr[mid-1]))){
+        low=mid+1;
+        }
+        else
+    {
+        high=mid-1;
+    }
+        }
+return ans;
+    }
+}
