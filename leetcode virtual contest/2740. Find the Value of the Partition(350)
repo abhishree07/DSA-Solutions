@@ -1,5 +1,7 @@
 class Solution {
     public int findValueOfPartition(int[] arr) {
+    Sorting array = O(nlogn) and looping=O(n) 
+    Overall time complexity = O(nlogn)+O(n) = O(nlogn)
         int n=arr.length;
         Arrays.sort(arr);
         int minDiff=Integer.MAX_VALUE;
