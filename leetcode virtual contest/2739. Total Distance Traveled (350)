@@ -1,0 +1,14 @@
+class Solution {
+    public int distanceTraveled(int mt, int at) {
+        int distance=mt;
+        int count=0;
+        while((mt>=5) && (at>=1)){
+            mt=mt-5;
+            count++;
+            at--;
+            mt++;
+        }
+        int ans=(distance+count)*10;
+        return ans;
+        }
+    }
