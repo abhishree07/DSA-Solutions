@@ -1,0 +1,12 @@
+class Solution {
+    public int findValueOfPartition(int[] arr) {
+        int n=arr.length;
+        Arrays.sort(arr);
+        int minDiff=Integer.MAX_VALUE;
+        for(int i=1;i<n;i++){
+            int currDiff=Math.abs(arr[i]-arr[i-1]);
+            minDiff=Math.min(minDiff,currDiff);
+        }
+        return minDiff;
+    }
+}
