@@ -1,8 +1,9 @@
 class Solution {
     public int distanceTraveled(int mt, int at) {
-        int distance=mt;
-        int count=0;
-        while((mt>=5) && (at>=1)){
+        Since the loop includes 2 variables namely mt which is decreasing by 5 and at which is decreasing by 1, the overall time complexity of the code will be O(at) or roughly O(n).
+        int distance=mt; 
+        int count=0; 
+        while((mt>=5) && (at>=1)){ 
             mt=mt-5;
             count++;
             at--;
