@@ -1,0 +1,26 @@
+//memoization technique (top down)
+//time complexity=O(n)-linear cause you are traversing recursively in a single direction and not recomputing.
+//space complexity=O(n+1)+O(n+1) = Recursion stack+dp[] =O(n) linear
+class Solution {
+    static int nthFibonacci(int n){
+    int[] dp=new int[n+1];
+    for(int i=0;i<dp.length;i++){
+        dp[i]=-1;
+    }
+    int ans=fibCalc(n,dp);
+    return ans;
+        
+    }
+    
+    static int fibCalc(int n, int[] dp){
+    if(n<=1)
+    return n;
+    if(dp[n]!=-1)
+    return dp[n];
+    
+    int ans=fibCalc(n-1,dp)+fibCalc(n-2,dp);
+    
+    dp[n]=ans%1000000007;
+    return dp[n];
+    }
+}
